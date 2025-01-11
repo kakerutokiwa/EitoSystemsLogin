@@ -20,7 +20,8 @@ body {
 /* Main Container (Outer Border) */
 .container {
   position: relative;
-  width: 400px; /* 外枠を広げる */
+  width: 400px; /* 外枠の幅 */
+  height: 500px; /* 縦長に変更 */
   padding: 20px;
   background-color: black;
   margin: 0 auto;
@@ -100,11 +101,16 @@ body {
   justify-content: flex-start;
   margin-bottom: 15px;
   width: 100%;
+  text-align: left; /* Left-align checkboxes */
 }
 
-/* Align the checkboxes vertically */
-.checkbox-container, .encryption-display {
-  margin-bottom: 10px; /* Ensuring vertical spacing */
+/* Centering checkboxes */
+.encryption-display, .checkbox-container {
+  display: flex;
+  justify-content: flex-start; /* Left-aligning checkboxes */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px; /* Add margin between checkboxes */
 }
 
 .checkbox-container input, .encryption-display input {
