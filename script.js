@@ -38,10 +38,11 @@ loginButton.addEventListener('click', function() {
     loginButton.textContent = 'Failure';
     loginButton.classList.add('failure');
     messageBox.textContent = 'Login Failed! Please check your credentials or try again.';
+    messageBox.classList.add('show'); // メッセージを表示
     setTimeout(() => {
       loginButton.textContent = 'Login';
       loginButton.classList.remove('failure');
-      messageBox.textContent = '';
+      messageBox.classList.remove('show'); // メッセージを非表示
     }, 5000);
   }
 });
