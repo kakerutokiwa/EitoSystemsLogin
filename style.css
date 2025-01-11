@@ -21,7 +21,7 @@ body {
 .container {
   position: relative;
   width: 400px; /* 外枠の幅 */
-  height: 550px; /* 少し縦長に変更 */
+  height: 500px; /* 縦長に変更 */
   padding: 20px;
   background-color: black;
   margin: 0 auto;
@@ -54,15 +54,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Ensure there's space between inputs and the login button */
-  height: 100%; /* Full height to center form elements properly */
 }
 
 /* Input Wrappers (Text Inputs) */
 .input-wrapper {
   position: relative;
   width: 100%;
-  margin-bottom: 20px; /* Increased margin for spacing between username and password */
+  margin-bottom: 15px;
   background-color: black;
 }
 
@@ -147,7 +145,6 @@ body {
     15px 100%, 
     0% calc(100% - 15px)
   ); /* Adding diagonal corners to the button */
-  margin-top: 30px; /* Adding space above the login button */
 }
 
 /* Hover Effect for Login Button */
