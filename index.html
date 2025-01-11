@@ -39,5 +39,20 @@
   </div>
 
   <script src="script.js"></script>
+
+   <script>
+    // パスワード表示の切り替え
+    const showPasswordCheckbox = document.getElementById('show-password');
+    const passwordInput = document.getElementById('password');
+
+    encryptionToggle.addEventListener('change', function () {
+      if (encryptionToggle.checked) {
+        passwordInput.type = 'text';  // パスワードを表示
+      } else {
+        passwordInput.type = 'password';  // パスワードを非表示
+      }
+    });
+<script>
+  
 </body>
 </html>
