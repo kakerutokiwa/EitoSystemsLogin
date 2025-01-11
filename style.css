@@ -137,14 +137,15 @@ body {
 .login-button.failure {
   color: #ff0000; /* 文字色を赤に変更 */
   border: 2px solid #ff0000; /* 枠線を赤に変更 */
-  animation: blinkFailure 1s infinite;
-  animation-fill-mode: forwards; /* アニメーション終了後に状態を維持 */
+  animation: blinkFailure 1s 5; /* 5回点滅 */
+  animation-fill-mode: forwards; /* 点滅後、色を保持 */
+  background: black; /* 背景色を黒に保持 */
 }
 
 /* Success State */
 .login-button.success {
-  color: #00ff00; /* 文字色を緑に変更 */
-  border: 2px solid #00ff00; /* 枠線を緑に変更 */
+  color: #00ffff; /* 文字色を青に戻す */
+  border: 2px solid rgba(0, 255, 255, 0.8); /* 枠線を青に戻す */
   background-color: black; /* 背景色を黒に維持 */
   transition: border 0.3s, color 0.3s;
 }
@@ -161,6 +162,25 @@ body {
 
 /* Apply animation and prevent color change after 5 blink iterations */
 .login-button.failure {
-  animation: blinkFailure 1s 5; /* 5回点滅 */
-  animation-fill-mode: forwards; /* アニメーション終了後に状態を維持 */
+  animation: blinkFailure 1s 5; /* 点滅を5回 */
+  animation-fill-mode: forwards; /* 点滅後に色を保持 */
+}
+
+/* Success Text Animation */
+@keyframes fadeInSuccess {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Fade in effect for Success state */
+.login-button.success {
+  animation: fadeInSuccess 0.5s ease-in-out;
+}
+
+/* Ensure text resets after 5 flashes */
+.login-button.failure.done {
+  color: #00ffff; /* テキスト色を元に戻す */
+  border: 2px solid rgba(0, 255, 255, 0.8); /* 枠線色を青に戻す */
+  animation: none; /* 点滅アニメーションを無効化 */
+  background-color: black; /* 背景色を黒に維持 */
 }
