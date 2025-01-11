@@ -1,186 +1,102 @@
-/* Reset Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body Styling */
+/* ベーススタイル */
 body {
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: #00ffff;
-  font-family: Arial, sans-serif;
-  text-align: center;
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-/* Main Container (Outer Border) */
-.container {
-  position: relative;
-  width: 320px;
-  padding: 20px;
-  background-color: black;
-  margin: 0 auto;
-  border: 3px solid rgba(0, 255, 255, 0.8); /* Outer border with same color as text */
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-  /* Optional: clip-path for cutting corners */
-}
-
-/* Title and Subtitle */
-.title {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-/* Form Wrapper */
 .form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    text-align: center;
 }
 
-/* Input Wrappers (Text Inputs) */
-.input-wrapper {
-  position: relative;
-  width: 100%;
-  margin-bottom: 15px;
-  background-color: black;
+h1 {
+    color: cyan;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-.input-wrapper input {
-  width: 100%;
-  padding: 10px;
-  background: none;
-  border: none;
-  color: #00ffff;
-  outline: none;
-  font-size: 14px;
-  z-index: 1;
+.form-box {
+    border: 4px solid #00bfff; /* 発光した青 */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.8);
+    width: 300px;
+    margin: 0 auto;
 }
 
-.input-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid rgba(0, 255, 255, 0.8);
-  clip-path: polygon(
-    0% 0%, 
-    calc(100% - 15px) 0%, 
-    100% 15px, 
-    100% 100%, 
-    15px 100%, 
-    0% calc(100% - 15px)
-  );
-  pointer-events: none;
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-/* Checkbox Containers */
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 15px;
-  width: 100%;
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #00bfff; /* 発光した青 */
 }
 
-.checkbox-container input {
-  margin-right: 8px;
-  transform: scale(1.2); /* Enlarging checkbox for better visibility */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #00bfff; /* 発光した青 */
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
 }
 
-.checkbox-label {
-  color: #00ffff;
-  font-size: 14px;
-  margin-left: 0;
-  line-height: 1.5;
+input[type="checkbox"] {
+    margin-right: 10px;
 }
 
-/* Login Button */
 .login-button {
-  position: relative;
-  padding: 10px 0;
-  width: 100%;
-  color: #00ffff; /* 初期の文字色 */
-  background: black; /* ボタンの背景は黒 */
-  border: 2px solid rgba(0, 255, 255, 0.8); /* 初期の枠線の色 */
-  cursor: pointer;
-  text-align: center;
-  font-size: 16px;
-  transition: background-color 0.3s, color 0.3s; /* 背景色と文字色の変更にトランジション */
+    background-color: transparent;
+    border: 2px solid #00bfff;
+    border-radius: 5px;
+    color: #00bfff; /* 発光した青 */
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Hover Effect for Login Button */
 .login-button:hover {
-  background-color: rgba(0, 255, 255, 0.1); /* ボタン背景色を透明に */
-  color: #ffffff; /* ホバー時に文字色を白に変更 */
+    background-color: #00bfff;
+    color: black;
 }
 
-/* Login Button Animation (for Success and Failure) */
-@keyframes fadeInOut {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+.message-box {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: red;
+    display: none;
 }
 
-/* Failure State */
+/* ボタンが失敗時に発光するスタイル */
 .login-button.failure {
-  color: #ff0000; /* 文字色を赤に変更 */
-  border: 2px solid #ff0000; /* 枠線を赤に変更 */
-  animation: blinkFailure 1s 5; /* 5回点滅 */
-  animation-fill-mode: forwards; /* 点滅後、色を保持 */
-  background: black; /* 背景色を黒に保持 */
+    border-color: red;
+    color: red;
+    animation: blink 1s infinite;
 }
 
-/* Success State */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ボタンが成功時に変化するスタイル */
 .login-button.success {
-  color: #00ffff; /* 文字色を青に戻す */
-  border: 2px solid rgba(0, 255, 255, 0.8); /* 枠線を青に戻す */
-  background-color: black; /* 背景色を黒に維持 */
-  transition: border 0.3s, color 0.3s;
+    border-color: green;
+    color: green;
 }
 
-/* Failure Button - Animation Duration and Limitations */
-@keyframes blinkFailure {
-  0% { opacity: 1; }
-  20% { opacity: 0; }
-  40% { opacity: 1; }
-  60% { opacity: 0; }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-/* Apply animation and prevent color change after 5 blink iterations */
-.login-button.failure {
-  animation: blinkFailure 1s 5; /* 点滅を5回 */
-  animation-fill-mode: forwards; /* 点滅後に色を保持 */
-}
-
-/* Success Text Animation */
-@keyframes fadeInSuccess {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-/* Fade in effect for Success state */
-.login-button.success {
-  animation: fadeInSuccess 0.5s ease-in-out;
-}
-
-/* Ensure text resets after 5 flashes */
-.login-button.failure.done {
-  color: #00ffff; /* テキスト色を元に戻す */
-  border: 2px solid rgba(0, 255, 255, 0.8); /* 枠線色を青に戻す */
-  animation: none; /* 点滅アニメーションを無効化 */
-  background-color: black; /* 背景色を黒に維持 */
+/* エラーメッセージ（失敗時） */
+.message-box.show {
+    display: block;
 }
