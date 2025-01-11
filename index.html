@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
- 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EitoSystems|Login</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EitoSystems|Login</title>
+    <link rel="stylesheet" href="styles.css">  <!-- 外部CSS -->
 </head>
 <body>
-  <div class="container">
-    <div class="title">Eito Systems</div>
-    <div class="subtitle">Login</div>
+
     <div class="form-container">
-      <!-- Username Input -->
-      <div class="input-wrapper">
-        <input type="text" id="username" placeholder="Username">
-      </div>
+        <h1>Eito Systems</h1>
+        
+        <div class="form-box">
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Username">
+            </div>
 
-      <!-- Password Input -->
-      <div class="input-wrapper">
-        <input type="password" id="password" placeholder="Password">
-      </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password">
+            </div>
 
-      <!-- Encryption Display Checkbox -->
-      <div class="checkbox-container">
-        <input type="checkbox" id="encryptionDisplay">
-        <label class="checkbox-label" for="encryptionDisplay">Encryption Display</label>
-      </div>
+            <!-- Encryption Display Checkbox -->
+            <div class="form-group">
+                <label for="encryptionDisplayCheckbox">
+                    <input type="checkbox" id="encryptionDisplayCheckbox">
+                    Encryption Display
+                </label>
+            </div>
 
-      <!-- ReMe Checkbox -->
-      <div class="checkbox-container">
-        <input type="checkbox" id="reme">
-        <label class="checkbox-label" for="reme">ReMe</label>
-      </div>
+            <!-- ReMe Checkbox -->
+            <div class="form-group">
+                <label for="remeCheckbox">
+                    <input type="checkbox" id="remeCheckbox">
+                    ReMe
+                </label>
+            </div>
 
-      <!-- Login Button -->
-      <button class="login-button" id="loginBtn">Login</button>
+            <!-- Login Button -->
+            <button class="login-button" id="loginButton">Login</button>
+        </div>
+
+        <!-- Message display area (for failure/success messages) -->
+        <div id="messageBox" class="message-box"></div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>  <!-- 外部JS -->
 </body>
 </html>
