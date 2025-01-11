@@ -42,4 +42,10 @@ document.getElementById("loginBtn").addEventListener("click", function() {
       }
     }, 1000);
   }
+  encryptionToggle.addEventListener('change', () => {
+  if (encryptionToggle.checked) {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
 });
