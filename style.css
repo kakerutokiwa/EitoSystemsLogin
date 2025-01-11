@@ -20,13 +20,21 @@ body {
 /* Main Container (Outer Border) */
 .container {
   position: relative;
-  width: 320px;
+  width: 400px; /* 外枠を広げる */
   padding: 20px;
   background-color: black;
   margin: 0 auto;
   border: 3px solid rgba(0, 255, 255, 0.8); /* Outer border with same color as text */
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
   /* Optional: clip-path for cutting corners */
+  clip-path: polygon(
+    0% 0%, 
+    calc(100% - 20px) 0%, 
+    100% 20px, 
+    100% 100%, 
+    20px 100%, 
+    0% calc(100% - 20px)
+  );
 }
 
 /* Title and Subtitle */
@@ -94,7 +102,12 @@ body {
   width: 100%;
 }
 
-.checkbox-container input {
+/* Align the checkboxes vertically */
+.checkbox-container, .encryption-display {
+  margin-bottom: 10px; /* Ensuring vertical spacing */
+}
+
+.checkbox-container input, .encryption-display input {
   margin-right: 8px;
   transform: scale(1.2); /* Enlarging checkbox for better visibility */
 }
@@ -111,19 +124,27 @@ body {
   position: relative;
   padding: 10px 0;
   width: 100%;
-  color: #00ffff; /* 初期の文字色 */
-  background: black; /* ボタンの背景は黒 */
-  border: 2px solid rgba(0, 255, 255, 0.8); /* 初期の枠線の色 */
+  color: #00ffff; /* Initial text color */
+  background: black; /* Button background is black */
+  border: 2px solid rgba(0, 255, 255, 0.8); /* Initial border color */
   cursor: pointer;
   text-align: center;
   font-size: 16px;
-  transition: background-color 0.3s, color 0.3s; /* 背景色と文字色の変更にトランジション */
+  transition: background-color 0.3s, color 0.3s; /* Transition for background and text color */
+  clip-path: polygon(
+    0% 0%, 
+    calc(100% - 15px) 0%, 
+    100% 15px, 
+    100% 100%, 
+    15px 100%, 
+    0% calc(100% - 15px)
+  ); /* Adding diagonal corners to the button */
 }
 
 /* Hover Effect for Login Button */
 .login-button:hover {
-  background-color: rgba(0, 255, 255, 0.1); /* ボタン背景色を透明に */
-  color: #ffffff; /* ホバー時に文字色を白に変更 */
+  background-color: rgba(0, 255, 255, 0.1); /* Transparent background when hovering */
+  color: #ffffff; /* Change text color to white on hover */
 }
 
 /* Login Button Animation (for Success and Failure) */
@@ -135,18 +156,18 @@ body {
 
 /* Failure State */
 .login-button.failure {
-  color: #ff0000; /* 文字色を赤に変更 */
-  border: 2px solid #ff0000; /* 枠線を赤に変更 */
-  animation: blinkFailure 1s 5; /* 5回点滅 */
-  animation-fill-mode: forwards; /* 点滅後、色を保持 */
-  background: black; /* 背景色を黒に保持 */
+  color: #ff0000; /* Change text color to red */
+  border: 2px solid #ff0000; /* Change border to red */
+  animation: blinkFailure 1s 5; /* Blink 5 times */
+  animation-fill-mode: forwards; /* Keep color after blinking */
+  background: black; /* Keep background black */
 }
 
 /* Success State */
 .login-button.success {
-  color: #00ffff; /* 文字色を青に戻す */
-  border: 2px solid rgba(0, 255, 255, 0.8); /* 枠線を青に戻す */
-  background-color: black; /* 背景色を黒に維持 */
+  color: #00ffff; /* Change text color to blue */
+  border: 2px solid rgba(0, 255, 255, 0.8); /* Keep blue border */
+  background-color: black; /* Keep background black */
   transition: border 0.3s, color 0.3s;
 }
 
@@ -162,8 +183,8 @@ body {
 
 /* Apply animation and prevent color change after 5 blink iterations */
 .login-button.failure {
-  animation: blinkFailure 1s 5; /* 点滅を5回 */
-  animation-fill-mode: forwards; /* 点滅後に色を保持 */
+  animation: blinkFailure 1s 5; /* Blink 5 times */
+  animation-fill-mode: forwards; /* Keep color after blinking */
 }
 
 /* Success Text Animation */
@@ -179,8 +200,8 @@ body {
 
 /* Ensure text resets after 5 flashes */
 .login-button.failure.done {
-  color: #00ffff; /* テキスト色を元に戻す */
-  border: 2px solid rgba(0, 255, 255, 0.8); /* 枠線色を青に戻す */
-  animation: none; /* 点滅アニメーションを無効化 */
-  background-color: black; /* 背景色を黒に維持 */
+  color: #00ffff; /* Reset text color to blue */
+  border: 2px solid rgba(0, 255, 255, 0.8); /* Reset border to blue */
+  animation: none; /* Disable blinking animation */
+  background-color: black; /* Keep background black */
 }
