@@ -1,45 +1,47 @@
-document.getElementById("loginBtn").addEventListener("click", function() {
-  // Get input values
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  const remeChecked = document.getElementById("reme").checked;
-  const encryptionChecked = document.getElementById("encryptionDisplay").checked;
+// 変数定義
+const usernameField = document.querySelector('#username');
+const passwordField = document.querySelector('#password');
+const encryptionDisplayCheckbox = document.querySelector('#encryptionDisplayCheckbox');
+const remeCheckbox = document.querySelector('#remeCheckbox');
+const loginButton = document.querySelector('#loginButton');
+const messageBox = document.querySelector('#messageBox');
 
-  // Correct credentials
-  const correctUsername = "Eito.K";
-  const correctPassword = "eitokikuchi8E";
+// ユーザー名とパスワードの検証
+const correctUsername = 'Eito.K';
+const correctPassword = 'eitokikuchi8E';
 
-  const loginBtn = document.getElementById("loginBtn");
+// チェックボックスの状態を監視
+encryptionDisplayCheckbox.addEventListener('change', function() {
+  if (encryptionDisplayCheckbox.checked) {
+    passwordField.type = 'text';  // パスワードを表示
+  } else {
+    passwordField.type = 'password';  // パスワードを隠す
+  }
+});
 
-  // Check if credentials are correct and ReMe checkbox is checked
-  if (username === correctUsername && password === correctPassword && remeChecked) {
-    // Change button to 'Success'
-    loginBtn.classList.remove("failure");
-    loginBtn.classList.add("success");
-    loginBtn.textContent = "Success";
+// ログインボタンのクリックイベント
+loginButton.addEventListener('click', function() {
+  const username = usernameField.value;
+  const password = passwordField.value;
+  const isReMeChecked = remeCheckbox.checked;
 
-    // Redirect after 2 seconds
-    setTimeout(function() {
-      window.location.href = "https://www.google.com";
+  // ユーザー名とパスワードが正しく、ReMeチェックボックスがチェックされているかを確認
+  if (username === correctUsername && password === correctPassword && isReMeChecked) {
+    // 成功
+    loginButton.textContent = 'Success';
+    loginButton.classList.add('success');
+    setTimeout(() => {
+      window.location.href = 'https://www.example.com'; // 新しいサイトに遷移
     }, 2000);
   } else {
-    // Change button to 'Failure' and start flashing animation
-    loginBtn.classList.remove("success");
-    loginBtn.classList.add("failure");
-    loginBtn.textContent = "Failure";
-
-    let count = 0;
-    const flashInterval = setInterval(function() {
-      loginBtn.classList.toggle("failure");
-      count++;
-
-      if (count >= 5) {
-        clearInterval(flashInterval);
-        loginBtn.classList.remove("failure");
-        // Reset to original state
-        loginBtn.style.backgroundColor = "none";
-        loginBtn.style.color = "#00ffff";
-      }
-    }, 1000);
+    // 失敗
+    loginButton.textContent = 'Failure';
+    loginButton.classList.add('failure');
+    messageBox.textContent = 'Login Failed! Please check your credentials or try again.';
+    setTimeout(() => {
+      loginButton.textContent = 'Login';
+      loginButton.classList.remove('failure');
+      messageBox.textContent = '';
+    }, 5000);
   }
 });
