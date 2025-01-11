@@ -1,38 +1,45 @@
-document.getElementById('loginBtn').addEventListener('click', function() {
-  var username = document.getElementById('username').value;
-  var password = document.getElementById('password').value;
-  var encryption = document.getElementById('encryption').checked;
-  var reme = document.getElementById('reme').checked;
-  
-  var loginButton = document.getElementById('loginBtn');
-  
-  if (username === "Eito.K" && password === "eitokikuchi8E" && reme) {
-    loginButton.classList.add('success');
-    loginButton.classList.remove('failure');
-    loginButton.textContent = "Success";
+document.getElementById("loginBtn").addEventListener("click", function() {
+  // Get input values
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  const remeChecked = document.getElementById("reme").checked;
+  const encryptionChecked = document.getElementById("encryptionDisplay").checked;
+
+  // Correct credentials
+  const correctUsername = "Eito.K";
+  const correctPassword = "eitokikuchi8E";
+
+  const loginBtn = document.getElementById("loginBtn");
+
+  // Check if credentials are correct and ReMe checkbox is checked
+  if (username === correctUsername && password === correctPassword && remeChecked) {
+    // Change button to 'Success'
+    loginBtn.classList.remove("failure");
+    loginBtn.classList.add("success");
+    loginBtn.textContent = "Success";
+
+    // Redirect after 2 seconds
     setTimeout(function() {
       window.location.href = "https://www.google.com";
     }, 2000);
   } else {
-    loginButton.classList.add('failure');
-    loginButton.classList.remove('success');
-    loginButton.textContent = "Failure";
-    setTimeout(function() {
-      loginButton.classList.add('done');
-    }, 5000);
-  }
-  // チェックボックスとPassword欄の関連付け
-const encryptionDisplayCheckbox = document.querySelector('#encryptionDisplayCheckbox');  // チェックボックス
-const passwordField = document.querySelector('#password');  // パスワード入力欄
+    // Change button to 'Failure' and start flashing animation
+    loginBtn.classList.remove("success");
+    loginBtn.classList.add("failure");
+    loginBtn.textContent = "Failure";
 
-// チェックボックスの状態を監視
-encryptionDisplayCheckbox.addEventListener('change', function() {
-  if (encryptionDisplayCheckbox.checked) {
-    // チェックボックスにチェックが入った場合、パスワードを表示
-    passwordField.type = 'text';  // パスワードの内容を表示
-  } else {
-    // チェックが外れた場合、パスワードを隠す
-    passwordField.type = 'password';  // パスワードを隠す
+    let count = 0;
+    const flashInterval = setInterval(function() {
+      loginBtn.classList.toggle("failure");
+      count++;
+
+      if (count >= 5) {
+        clearInterval(flashInterval);
+        loginBtn.classList.remove("failure");
+        // Reset to original state
+        loginBtn.style.backgroundColor = "none";
+        loginBtn.style.color = "#00ffff";
+      }
+    }, 1000);
   }
-});
 });
