@@ -3,7 +3,16 @@ document.getElementById("loginBtn").addEventListener("click", function() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const remeChecked = document.getElementById("reme").checked;
-  const encryptionChecked = document.getElementById("encryptionDisplay").checked;
+  const encryptionToggle = document.getElementById('encryptionToggle');
+
+  // Toggle Password Visibility
+encryptionToggle.addEventListener('change', () => {
+  if (encryptionToggle.checked) {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+});
 
   // Correct credentials
   const correctUsername = "Eito.K";
@@ -41,11 +50,5 @@ document.getElementById("loginBtn").addEventListener("click", function() {
         loginBtn.style.color = "#00ffff";
       }
     }, 1000);
-  }
-  encryptionToggle.addEventListener('change', () => {
-  if (encryptionToggle.checked) {
-    passwordInput.type = 'text';
-  } else {
-    passwordInput.type = 'password';
   }
 });
