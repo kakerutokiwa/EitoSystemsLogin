@@ -29,7 +29,7 @@ encryptionToggle.addEventListener('change', () => {
 
     // Redirect after 2 seconds
     setTimeout(function() {
-      window.location.href = "https://www.google.com";
+      window.location.href = "https://kakerutokiwa.github.io/EitoSystems/";
     }, 2000);
   } else {
     // Change button to 'Failure' and start flashing animation
